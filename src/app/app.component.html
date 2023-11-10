@@ -66,15 +66,26 @@
           <li class="cardPokemon" *ngFor="let pokemon of pokemons" (click)="showDetails(pokemon)">
             <img class="photoPokemon" src="{{pokemon.photo}}" alt="">
             <h2>{{ pokemon.name }}</h2>
-            <p class="{{type}}" *ngFor="let type of pokemon.type">{{type}}</p>
+            <div class="line">
+              <p class="{{type}}" *ngFor="let type of pokemon.type">{{type}}</p>
+            </div>
           </li>
         </ul>
       </section>
     </main>
-    <div *ngIf="selectdPokemon" class="modal">
+    <div *ngIf="selectedPokemon" class="modal" (click)="closeModal()">
       <div class="content-container">
-        <h2>{{ selectdPokemon.name }}</h2>
-        <p>{{ selectdPokemon.description }}</p>
+        <img width="300" src="{{selectedPokemon.photo}}" alt="">   
+        
+          <div class="lateral">
+            <h2>{{selectedPokemon.name}}</h2>
+            <p>{{selectedPokemon.description}}</p>
+            <img class="photoEvolution" src="{{selectedPokemon.evolution}}" alt="">
+                    
+                    <div class="types">
+            <p class="{{type}}" *ngFor="let type of selectedPokemon.type">{{type}}</p>
+                    </div>
+          </div>
         <button (click)="closeModal()">Fechar</button>
       </div>
 
